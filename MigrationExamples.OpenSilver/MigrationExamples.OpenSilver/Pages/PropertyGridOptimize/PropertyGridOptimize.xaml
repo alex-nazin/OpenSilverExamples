@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="MigrationExamples.OpenSilver.Pages.PropertyGridOptimize.PropertyGridOptimize"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MigrationExamples.OpenSilver.Pages.PropertyGridOptimize">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="PropertyGrid Optimization" Style="{StaticResource PageHeader_Style}"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                <TextBlock Style="{StaticResource Description_Style}">
+The customer used a <Run Style="{StaticResource Code_Style}">PropertyGrid</Run> with a large number of elements to display the properties of different objects.
+ In addition, the <Run Style="{StaticResource Code_Style}">PropertyGrid</Run> could group properties into categories.<LineBreak/>
+Whenever the active object or grouping changed, the entire content of the <Run Style="{StaticResource Code_Style}">PropertyGrid</Run> was regenerated.
+ As a result, this element was very slow in the migrated application.<LineBreak/>
+To optimize it, we came up with an approach where UI elements were cached and only the <Run Style="{StaticResource Code_Style}">DataContext</Run> of cached elements was replaced.
+ This was possible because the same properties used for different objects had the same value type.
+ The resulting solution significantly accelerated the process of building the <Run Style="{StaticResource Code_Style}">PropertyGrid</Run>.<LineBreak/>
+However, the time for the initial filling with properties is comparable to the time of filling time for a non-optimized <Run Style="{StaticResource Code_Style}">PropertyGrid</Run>,
+ because the UI elements are not yet in the cache. Nevertheless, the approach is considered successful because the application users work with many elements (often switching between them),
+ so the optimization works.
+                </TextBlock>
+            </Border>
+
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <TextBlock Margin="0, 10" Style="{StaticResource UsualText_Style}">Original control.</TextBlock>
+                <CheckBox x:Name="NonOptGrouping"
+                      Margin="0,10,20,10" IsChecked="False" Checked="NonOptGrouping_Checked" Unchecked="NonOptGrouping_Unchecked"
+                      VerticalContentAlignment="Top">
+                    <TextBlock Style="{StaticResource UsualText_Style}">Enable grouping.</TextBlock>
+                </CheckBox>
+                <Button Margin="0,10,20,10" Content="Set new items" Click="NonOptSetNewItems_Click" /> 
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <TextBlock Margin="20,10,0,10" Style="{StaticResource UsualText_Style}">Control with optimization.</TextBlock>
+                <CheckBox x:Name="OptGrouping"
+                      Margin="20,10,0,10" IsChecked="False" Checked="OptGrouping_Checked" Unchecked="OptGrouping_Unchecked"
+                      VerticalContentAlignment="Top">
+                    <TextBlock Style="{StaticResource UsualText_Style}">Enable grouping.</TextBlock>
+                </CheckBox>
+                <Button Margin="20,10,0,10" Content="Set new items" Click="OptSetNewItems_Click" />
+            </StackPanel>
+
+            <local:PropertyGrid Grid.Row="2" Grid.Column="0"
+                                Margin="0,20,20,20"
+                                x:Name="PropertyGridWithoutOptimization"/>
+            <local:PropertyGridNew Grid.Row="2" Grid.Column="1"
+                                   Margin="20,20,0,20"
+                                   x:Name="PropertyGridWithOptimization"/>
+        </Grid>
+    </StackPanel>
+</UserControl>

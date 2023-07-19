@@ -1,0 +1,76 @@
+﻿<Page
+    x:Class="MigrationExamples.OpenSilver.Pages.CollectionManagement.CollectionManagement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ListItemDataTemplate">
+            <Grid Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding Image}" />
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="5,0">
+                    <TextBlock Text="User: " FontSize="20" />
+                    <TextBlock Text="{Binding Name}" FontSize="20" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="5,0">
+                    <TextBlock Text="Order: " FontSize="14" />
+                    <TextBlock Text="{Binding Order}" FontSize="14" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <StackPanel Margin="20">
+        <TextBlock Text="ObservableCollection Management" Style="{StaticResource PageHeader_Style}"/>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+            <TextBlock Style="{StaticResource Description_Style}">
+The client used <Run Style="{StaticResource Code_Style}">ObservableCollection</Run> to store user models.
+ To display an up-to-date ordered list of users, he subscribed to the <Run Style="{StaticResource Code_Style}">CollectionChanged</Run> event on the model collection
+ and when that collection changed, he created (or recreated) a new collection of view models to assign as <Run Style="{StaticResource Code_Style}">ItemsSource</Run>
+ to the <Run Style="{StaticResource Code_Style}">ItemsControl</Run> element.<LineBreak />
+This approach worked fast enough in <Bold>Silverlight</Bold>, but was inefficient for <Bold>OpenSilver</Bold>.
+ There were unnecessary operations to remove and add user view models that were present in both the old and new sets. As a result, the list was updated very slowly.<LineBreak />
+The optimised solution uses <Run Style="{StaticResource Code_Style}">NotifyCollectionChangedAction</Run> enumeration to understand what is happening with the items.
+ It only adds and removes only the required items from the list, leaving the other items unchanged.
+ This approach has significantly improved the performance of the user list.
+            </TextBlock>
+        </Border>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="0,20" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                <Button Content="Add new 5 users" Click="AddNewUsers_Click" Margin="0,5,10,5" FontSize="18"/>
+                <Button Content="Delete 5 random users" Click="DeleteUsers_Click" Margin="10,5,0,5" FontSize="18"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,20" Grid.Row="2" Grid.Column="0">
+                <TextBlock Text="Non-optimal approach to fill list of users" Style="{StaticResource UsualText_Style}" Margin="0,5"/>
+                <TextBlock x:Name="NonOptimalResults" Margin="0,5" />
+                <ItemsControl x:Name="NonOptimalItemsControl" ItemTemplate="{StaticResource ListItemDataTemplate}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,20" Grid.Row="2" Grid.Column="1">
+                <TextBlock Text="Optimized approach to fill list of users" Style="{StaticResource UsualText_Style}"  Margin="0,5"/>
+                <TextBlock x:Name="OptimalResults" Margin="0,5" />
+                <ItemsControl x:Name="OptimalItemsControl" ItemTemplate="{StaticResource ListItemDataTemplate}" />
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Page>

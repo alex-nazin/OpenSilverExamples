@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="MigrationExamples.OpenSilver.Pages.CustomCursor.CustomCursor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MigrationExamples.OpenSilver.Pages.CustomCursor">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <StackPanel Margin="20">
+            <TextBlock Text="Remove Custom Cursor" Style="{StaticResource PageHeader_Style}"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                    <TextBlock Style="{StaticResource Description_Style}">
+The customer used a non-standard cursor to indicate the drag'n'drop operation. The cursor was implemented as an image on the canvas.
+ Performance analysis showed that redrawing the canvas with the cursor every time the mouse was moved was a costly operation.<LineBreak/>
+Since it was necessary to perform some calculations while moving the mouse, it became obvious that the non-standard cursor should be optimized.
+ However, we could not find a suitable solution.<LineBreak/>
+So we suggested that the customer drop the non-standard cursor altogether and use the standard cursor.
+ The customer agreed and the drag'n'drop operation became faster.
+                    </TextBlock>
+                </Border>
+
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <RadioButton x:Name="SystemCursorCheck" Checked="SystemCursorCheck_Checked" GroupName="myGroup" Margin="20">
+                        <TextBlock Style="{StaticResource UsualText_Style}">Use system cursor.</TextBlock>
+                    </RadioButton>
+
+                    <RadioButton x:Name="CustomCursorCheck" Checked="CustomCursorCheck_Checked" GroupName="myGroup" Margin="20">
+                        <TextBlock Style="{StaticResource UsualText_Style}">Use custom cursor.</TextBlock>
+                    </RadioButton>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+
+        <ContentControl>
+            <local:MyCursorControl x:Name="MyCursor" />
+        </ContentControl>
+    </Grid>
+</Page>

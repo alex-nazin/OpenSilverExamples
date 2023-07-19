@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="MigrationExamples.OpenSilver.Pages.HideSomeItems.OptimizeItemsSearch"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Page.Resources>
+        <DataTemplate x:Key="ListItemDataTemplate">
+            <StackPanel Visibility="{Binding Visibility}">
+                <TextBlock Text="{Binding MainText}" FontSize="20" />
+                <TextBlock Text="{Binding AdditionalText}" FontSize="16" />
+                <TextBlock Text="{Binding DetailText}" FontSize="12" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Optimize Items Search" Style="{StaticResource PageHeader_Style}"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" /> 
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                <TextBlock Style="{StaticResource Description_Style}">
+The customer implemented a search for items in a large list. When the search criteria changed, he re-created the entire collection of items
+ associated with the <Run Style="{StaticResource Code_Style}">ItemsSource</Run> in the <Run Style="{StaticResource Code_Style}">ItemsControl</Run> element. This was inefficient and slow.<LineBreak/>
+To optimize the performance of the list during the search, we decided not to delete or add items, but to adjust the visibility of the items using the <Run Style="{StaticResource Code_Style}">Visibility</Run> property.
+ So we set the value of the <Run Style="{StaticResource Code_Style}">Visibility</Run> property of the root item element to <Run Style="{StaticResource Code_Style}">Visibility.Visible</Run>
+ if it matched the search criteria, and to <Run Style="{StaticResource Code_Style}">Visibility.Collapsed</Run> if it did not.
+The performance of the list has increased manifold.
+                </TextBlock>
+            </Border>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
+                <TextBlock Text="Type something to search using slow approach:" Margin="0,10" Style="{StaticResource UsualText_Style}" />
+                <TextBlock x:Name="SlowApproachTime" Text=" "/>
+                <TextBox Margin="0,10" x:Name="SlowApproachTextBox" TextChanged="SlowApproach_TextChanged" />
+                <ItemsControl Margin="0,10" x:Name="SlowApproachList" ItemTemplate="{StaticResource ListItemDataTemplate}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1"  Margin="10">
+                <TextBlock Text="Type something to search using fast approach:" Margin="0,10" Style="{StaticResource UsualText_Style}" />
+                <TextBlock x:Name="FastApproachTime" Text=" "/>
+                <TextBox Margin="0,10" x:Name="FastApproachTextBox" TextChanged="FastApproach_TextChanged" />
+                <ItemsControl Margin="0,10" x:Name="FastApproachList" ItemTemplate="{StaticResource ListItemDataTemplate}" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Page>

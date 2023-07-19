@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="MigrationExamples.OpenSilver.Pages.ShapesGradientFill.ShapesGradientFill"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MigrationExamples.OpenSilver.Pages.ShapesGradientFill">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Fix and Optimize Rectangle Fill" Style="{StaticResource PageHeader_Style}"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                <TextBlock Style="{StaticResource Description_Style}">
+The colour picker element used the gradient fill in the <Run Style="{StaticResource Code_Style}">Rectangle</Run> element to display the colour map.
+ However, gradient fills for primitives do not work in <Bold>OpenSilver</Bold> library.
+As part of the task of optimizing the page rendering time, it was decided to avoid using graphic primitives as much as possible.
+ So we replaced the <Run Style="{StaticResource Code_Style}">Rectangle</Run> element with the <Run Style="{StaticResource Code_Style}">Border</Run> element.
+This also solved the problem of displaying the colour map, as gradient fill works for the <Run Style="{StaticResource Code_Style}">Border</Run> element in the <Bold>OpenSilver</Bold> library.
+                </TextBlock>
+            </Border>
+
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <TextBlock Margin="0, 10" Style="{StaticResource UsualText_Style}">Original control.</TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <TextBlock Margin="0, 10" Style="{StaticResource UsualText_Style}">Fixed control.</TextBlock>
+            </StackPanel>
+
+            <local:OldControl Grid.Row="2" Grid.Column="0"
+                              Height="500"
+                              Margin="0,12,12,12"
+                              Padding="12"/>
+
+            <local:NewControl Grid.Row="2" Grid.Column="1"
+                              Height="500"
+                              Margin="0,12,12,12"
+                              Padding="12"
+                              />
+        </Grid>
+    </StackPanel>
+</Page>

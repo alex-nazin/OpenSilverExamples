@@ -1,0 +1,17 @@
+﻿<UserControl
+    x:Class="MigrationExamples.OpenSilver.Pages.Home"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Welcome!" Style="{StaticResource PageHeader_Style}"/>
+        
+        <Border Style="{StaticResource DescriptionBorder_Style}">
+            <StackPanel Margin="20">
+                <TextBlock Text="This app contains examples of several problems that were found during migration." Style="{StaticResource UsualText_Style}"/>
+                <TextBlock Text="TIP: Use the menu on the left to navigate from page to page." FontSize="12" Foreground="#FF666666" TextWrapping="Wrap" FontStyle="Italic"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+
+</UserControl>

@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="MigrationExamples.OpenSilver.Pages.CloseDialogDuringLoadedEvent.CloseDialogDuringLoadedEvent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Fix Close Dialog In Loaded Event Handler" Style="{StaticResource PageHeader_Style}"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                <TextBlock Style="{StaticResource Description_Style}">
+If we call the <Run Style="{StaticResource Code_Style}">Close()</Run> method of the <Run Style="{StaticResource Code_Style}">ChildWindow</Run> successor in the <Run Style="{StaticResource Code_Style}">Loaded</Run> event handler,
+ we will get a displayed but non-working dialog box in the migrated application. This happens because this window is not fully initialized.<LineBreak/>
+To resolve this situation, the window should only be closed from the <Run Style="{StaticResource Code_Style}">Loaded</Run> event handler using the <Run Style="{StaticResource Code_Style}">Dispatcher</Run>:<LineBreak/><LineBreak/>
+<Run Style="{StaticResource Code_Style}">Dispatcher.BeginInvoke(() => Close());</Run>
+                </TextBlock>
+            </Border>
+
+            <StackPanel Grid.Row="1" Margin="20" HorizontalAlignment="Left">
+                <Button  Grid.Column="0" Content="Test wrong implementation" Click="TestWrongImplementation_Click" Margin="10" HorizontalAlignment="Left"/>
+                <TextBlock Style="{StaticResource UsualText_Style}" Margin="10" Text="WARNING: after you click this button, you will see a dialog box that cannot be closed. Restart the application to get rid of it."
+                           Foreground="Red"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Margin="20" HorizontalAlignment="Left">
+                <Button  Grid.Column="0" Content="Test right implementation" Click="TestRightImplementation_Click" Margin="10" HorizontalAlignment="Left"/>
+                <TextBlock Style="{StaticResource UsualText_Style}" Margin="10"
+                           Text="INFO: you will not see an open dialog window after clicking this button because the window will be closed successfully."
+                           Foreground="Green"/>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Page>

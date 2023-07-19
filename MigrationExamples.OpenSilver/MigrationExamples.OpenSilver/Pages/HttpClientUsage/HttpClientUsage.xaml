@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="MigrationExamples.OpenSilver.Pages.HttpClientUsage.HttpClientUsage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="HttpClient vs HttpWebRequest" Style="{StaticResource PageHeader_Style}"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                <TextBlock Style="{StaticResource Description_Style}">
+This is an example of the most common functionality that requires a complete change. <Run Style="{StaticResource Code_Style}">WebRequest</Run> functionality
+ is not currently supported and are not recommended for use. It is necessary to rewrite the network request code to use <Run Style="{StaticResource Code_Style}">HttpClient</Run>.
+ An added benefit of the migration is the ability to use asynchronous functions.
+                </TextBlock>
+            </Border>
+
+            <Button Grid.Row="1" Grid.Column="0" Content="Test HttpClient" Click="TestHttpClient_Click" Margin="10"/>
+            <Button Grid.Row="2" Grid.Column="0" Content="Test WebRequest" Click="TestWebRequest_Click" Margin="10"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="HttpClientResult" Margin="10" Style="{StaticResource UsualText_Style}" />
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="WebRequestResult" Margin="10" Style="{StaticResource UsualText_Style}"/>
+        </Grid>
+    </StackPanel>
+</Page>

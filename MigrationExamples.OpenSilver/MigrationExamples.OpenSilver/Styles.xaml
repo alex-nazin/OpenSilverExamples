@@ -1,0 +1,143 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sgf="clr-namespace:MigrationExamples.OpenSilver.Pages.ShapesGradientFill">
+
+    <Style x:Key="PageHeader_Style" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontFamily" Value="Segoe UI Light"/>
+        <Setter Property="Margin" Value="0,10,10,20"/>
+        <Setter Property="Foreground" Value="#FF2299A1"/>
+    </Style>
+
+    <Style x:Key="SubheaderText_Style" TargetType="TextBlock" BasedOn="{StaticResource PageHeader_Style}">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Margin" Value="0,10" />
+    </Style>
+
+    <Style x:Key="Description_Style" TargetType="TextBlock" BasedOn="{StaticResource SubheaderText_Style}">
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+    <Style x:Key="UsualText_Style" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Foreground" Value="#FF333333"/>
+    </Style>
+
+    <Style x:Key="Code_Style" TargetType="Run">
+        <Setter Property="FontFamily" Value="Consolas"/>
+    </Style>
+
+    <Style x:Key="DescriptionBorder_Style" TargetType="Border">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="0,0,0,40" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="3" Color="Black" BlurRadius="10" Opacity="0.1" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <LinearGradientBrush x:Key="HueBrush" StartPoint="0.5,0.025" EndPoint="0.5,1">
+        <GradientStop Color="#FFFF0000"/>
+        <GradientStop Color="#FEFFFF00" Offset="0.167"/>
+        <GradientStop Color="#FE00FF00" Offset="0.333"/>
+        <GradientStop Color="#FE00FFFF" Offset="0.5"/>
+        <GradientStop Color="#FE0000FF" Offset="0.667"/>
+        <GradientStop Color="#FEFF00FF" Offset="0.833"/>
+        <GradientStop Color="#FFFF0000" Offset="1.0"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="HueBrushHorizontal" StartPoint="0, 0.5" EndPoint="1,0.5">
+        <GradientStop Color="#FFFF0000"/>
+        <GradientStop Color="#FEFFFF00" Offset="0.167"/>
+        <GradientStop Color="#FE00FF00" Offset="0.333"/>
+        <GradientStop Color="#FE00FFFF" Offset="0.5"/>
+        <GradientStop Color="#FE0000FF" Offset="0.667"/>
+        <GradientStop Color="#FEFF00FF" Offset="0.833"/>
+        <GradientStop Color="#FFFF0000" Offset="1.0"/>
+    </LinearGradientBrush>
+
+    <Style x:Key="OldControlStyle" TargetType="sgf:OldControl">
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="#FF848484" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="sgf:OldControl">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" MinHeight="200"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Margin="0,0,10,0">
+                                <Rectangle Fill="{StaticResource HueBrushHorizontal}"/>
+                            </Grid>
+                            <Grid Grid.Column="1" Width="40" Margin="10,0,0,0">
+                                <Rectangle Fill="{StaticResource HueBrush}"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource OldControlStyle}" TargetType="sgf:OldControl"/>
+
+    <Style x:Key="NewControlStyle" TargetType="sgf:NewControl">
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="#FF848484" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="sgf:NewControl">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" MinHeight="200"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Margin="0,0,10,0">
+                                <Border Background="{StaticResource HueBrushHorizontal}"/>
+                            </Grid>
+                            <Grid Grid.Column="1" Width="40" Margin="10,0,0,0">
+                                <Border Background="{StaticResource HueBrush}"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource NewControlStyle}" TargetType="sgf:NewControl"/>
+
+
+
+</ResourceDictionary>

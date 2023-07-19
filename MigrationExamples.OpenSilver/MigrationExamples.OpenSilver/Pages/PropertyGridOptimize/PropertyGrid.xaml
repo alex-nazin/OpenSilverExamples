@@ -1,0 +1,10 @@
+﻿<UserControl
+    x:Class="MigrationExamples.OpenSilver.Pages.PropertyGridOptimize.PropertyGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <Border BorderBrush="#FF7c8d9c" BorderThickness="1" CornerRadius="3">
+            <StackPanel x:Name="LayoutRoot" Background="White" />
+        </Border>
+    </StackPanel>
+</UserControl>

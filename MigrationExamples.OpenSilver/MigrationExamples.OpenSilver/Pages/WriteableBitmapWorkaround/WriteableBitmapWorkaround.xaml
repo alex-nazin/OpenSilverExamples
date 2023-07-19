@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="MigrationExamples.OpenSilver.Pages.WriteableBitmapWorkaround.WriteableBitmapWorkaround"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Workaround for WritableBitmap" Style="{StaticResource PageHeader_Style}"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                <TextBlock Style="{StaticResource Description_Style}">
+The customer stored an array of pixels in a database and used the <Run Style="{StaticResource Code_Style}">WriteableBitmap.Pixels</Run> property to write color information and display the image.
+At the time of migration, the <Bold>OpenSilver</Bold> library lacked an implementation of the <Run Style="{StaticResource Code_Style}">WriteableBitmap</Run> class.
+ Therefore, to display the image, we used the ability to create a <Run Style="{StaticResource Code_Style}">BitmapImage</Run> element from the <Bold>OpenSilver</Bold> library
+ and pass it an image in a known format using the <Run Style="{StaticResource Code_Style}">Base64</Run> representation of the data.<LineBreak/>
+To simplify the implementation, the <Bold>BMP</Bold> format was chosen. The description of this format is available from MSDN.
+ It was necessary to correctly generate the structure of the <Bold>BMP</Bold> file in memory and fill the structure with color data. The the <Bold>BMP</Bold> file created in memory is set
+ to <Run Style="{StaticResource Code_Style}">BitmapImage</Run> using the <Run Style="{StaticResource Code_Style}">SetSource</Run> function:<LineBreak/><LineBreak/>
+<Run Style="{StaticResource Code_Style}">bitmapImage.SetSource(string.Format("data:image/bmp;base64, {0}", base64ContentOfFile));</Run><LineBreak/>
+The customer stored rather small images in the database, so the implemented approach did not affect performance.
+Currently, an implementation of <Run Style="{StaticResource Code_Style}">WriteableBitmap</Run> is available in the <Bold>OpenSilver</Bold> library.
+                </TextBlock>
+            </Border>
+
+            <StackPanel Grid.Row="1">
+                <TextBlock Style="{StaticResource UsualText_Style}" Text="Example of displaying raw pixel data."  Margin="0,0,0,10"/>
+                <Image HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Stretch="None"
+                       x:Name="MyImage" />
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>

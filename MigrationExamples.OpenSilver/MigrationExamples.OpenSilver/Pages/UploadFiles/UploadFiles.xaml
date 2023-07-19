@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="MigrationExamples.OpenSilver.Pages.UploadFiles.UploadFiles"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Upload Files" Style="{StaticResource PageHeader_Style}"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                <TextBlock Style="{StaticResource Description_Style}">
+The <Run Style="{StaticResource Code_Style}">OpenFileDialog</Run> implementation was missing in the <Bold>OpenSilver</Bold> library at the time of migration.
+In order to allow the user to select a file and upload its contents to the server, a JS-based file opening function has been implemented.<LineBreak/>
+Note: the file upload function implementation is currently available in the <Bold>OpenSilver</Bold> library (<Run Style="{StaticResource Code_Style}">OpenSilver.Controls.OpenFileDialog</Run> class).
+                </TextBlock>
+            </Border>
+
+            <Button Grid.Row="1" Grid.Column="0" Content="Try to upload file using OpenFileDialog" Click="UploadViaOpenFileDialog_Click" Margin="10"/>
+            <Button Grid.Row="2" Grid.Column="0" Content="Try to upload file using JS-based function" Click="UploadViaJsBasedFunction_Click" Margin="10"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="OpenFileDialogResult" Margin="10" Style="{StaticResource UsualText_Style}" />
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="JsBasedFunctionResult" Margin="10" Style="{StaticResource UsualText_Style}"/>
+        </Grid>
+    </StackPanel>
+</Page>

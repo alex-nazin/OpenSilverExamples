@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="MigrationExamples.OpenSilver.Pages.ObjectInstantiation.ObjectInstantiation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Objects Instantiation" Style="{StaticResource PageHeader_Style}"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource DescriptionBorder_Style}">
+                <TextBlock Style="{StaticResource Description_Style}">
+The problem to solve was to speed up the creation of a large number of objects. To do this, instead of using <Run Style="{StaticResource Code_Style}">Activator.CreateInstance(...)</Run>,
+ the <Bold>&quot;Creating objects using Linq Expressions&quot;</Bold> approach was used.
+The new approach works about twice as fast. Although we didn't get a significant enough speed-up (because objects are created quickly even using
+ <Run Style="{StaticResource Code_Style}">Activator.CreateInstance(...)</Run>), the solution we got still allows us to speed up the creation of a large number of objects.
+                </TextBlock>
+            </Border>
+
+            <Button Grid.Row="1" Grid.Column="0" Content="Create objects using Activator" Click="UseActivator_Click" Margin="10" HorizontalAlignment="Stretch"/>
+            <Button Grid.Row="2" Grid.Column="0" Content="Create objects using Expression" Click="UseExpression_Click" Margin="10" HorizontalAlignment="Stretch"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="UseActivatorResult" Margin="10" Style="{StaticResource UsualText_Style}" />
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="UseExpressionResult" Margin="10" Style="{StaticResource UsualText_Style}" />
+        </Grid>
+    </StackPanel>
+</Page>

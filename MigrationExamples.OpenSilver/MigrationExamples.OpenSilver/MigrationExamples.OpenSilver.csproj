@@ -1,0 +1,132 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <DefineSilverlight>true</DefineSilverlight>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenSilver" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Pages\CloseDialogDuringLoadedEvent\CloseDialogDuringLoadedEvent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CloseDialogDuringLoadedEvent\RightWayCloseChildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CloseDialogDuringLoadedEvent\WrongWayCloseChildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CollectionManagement\CollectionManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomCursor\CustomCursor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomCursor\MyCursorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ObjectInstantiation\ObjectInstantiation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OptimizeItemsSearch\OptimizeItemsSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HttpClientUsage\HttpClientUsage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PropertyGridOptimize\PropertyGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PropertyGridOptimize\PropertyGridNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PropertyGridOptimize\PropertyGridOptimize.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReplaceAnimationWithGif\ReplaceAnimationWithGif.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ShapesGradientFill\ShapesGradientFill.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ShapesRemoving\ShapesRemoving.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UploadFiles\UploadFiles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WriteableBitmapWorkaround\WriteableBitmapWorkaround.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="App.xaml.cs" />
+    <Compile Include="Pages\CloseDialogDuringLoadedEvent\CloseDialogDuringLoadedEvent.xaml.cs" />
+    <Compile Include="Pages\CloseDialogDuringLoadedEvent\RightWayCloseChildWindow.xaml.cs" />
+    <Compile Include="Pages\CloseDialogDuringLoadedEvent\WrongWayCloseChildWindow.xaml.cs" />
+    <Compile Include="Pages\CollectionManagement\CollectionManagement.xaml.cs" />
+    <Compile Include="Pages\CollectionManagement\Names.cs" />
+    <Compile Include="Pages\CollectionManagement\UserModel.cs" />
+    <Compile Include="Pages\CollectionManagement\UserViewModel.cs" />
+    <Compile Include="Pages\CustomCursor\CustomCursor.xaml.cs" />
+    <Compile Include="Pages\CustomCursor\MyCursorControl.xaml.cs" />
+    <Compile Include="Pages\CustomCursor\MyCustomCursorViewModel.cs" />
+    <Compile Include="Pages\ObjectInstantiation\ClassBuilder.cs" />
+    <Compile Include="Pages\ObjectInstantiation\ObjectInstantiation.xaml.cs" />
+    <Compile Include="Pages\ObjectInstantiation\TestObjectModel.cs" />
+    <Compile Include="Pages\OptimizeItemsSearch\OptimizeItemsSearch.xaml.cs" />
+    <Compile Include="Pages\OptimizeItemsSearch\ItemInfo.cs" />
+    <Compile Include="Pages\OptimizeItemsSearch\ItemInfoGenerator.cs" />
+    <Compile Include="Pages\Home.xaml.cs" />
+    <Compile Include="MainPage.xaml.cs" />
+    <Compile Include="Pages\HttpClientUsage\HttpClientUsage.xaml.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\BooleanInverterConverter.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\ComboBoxSelectBehavior.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\PropertyItem.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\PropertyGrid.xaml.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\PropertyGridNew.xaml.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\PropertyGridOptimize.xaml.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\PropertyItemsGenerator.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\SingleTextBoxFocusBehavior.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\String2BoolConverter.cs" />
+    <Compile Include="Pages\PropertyGridOptimize\TextBoxUpdateBehavior.cs" />
+    <Compile Include="Pages\ReplaceAnimationWithGif\ReplaceAnimationWithGif.xaml.cs" />
+    <Compile Include="Pages\ShapesGradientFill\NewControl.cs" />
+    <Compile Include="Pages\ShapesGradientFill\OldControl.cs" />
+    <Compile Include="Pages\ShapesGradientFill\ShapesGradientFill.xaml.cs" />
+    <Compile Include="Pages\ShapesRemoving\ShapesRemoving.xaml.cs" />
+    <Compile Include="Pages\UploadFiles\FileUploaderDialog.cs" />
+    <Compile Include="Pages\UploadFiles\UploadFiles.xaml.cs" />
+    <Compile Include="Pages\WriteableBitmapWorkaround\BitmapPixelsGenerator.cs" />
+    <Compile Include="Pages\WriteableBitmapWorkaround\BitmapSourceGenerator.cs" />
+    <Compile Include="Pages\WriteableBitmapWorkaround\WriteableBitmapWorkaround.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\CollectionManagement\UserFemale.png" />
+    <Content Include="Pages\CollectionManagement\UserMale.png" />
+    <Content Include="Pages\ReplaceAnimationWithGif\loaderspinner.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pages\CustomCursor\DDCursor.png" />
+  </ItemGroup>
+
+</Project>
